@@ -8,10 +8,10 @@ import { Form, FormAnnotation } from './styles'
 const claimUsernameFormSchema = z.object({
   username: z
     .string()
-    .min(3, { message: 'Username must be at least 3 characters long' })
+    .min(3, { message: 'Seu nome do usuário deve ter pelo menos 3 letras' })
 
     .regex(/^([a-z\\\\-]+)$/i, {
-      message: 'Username must be only letters and dash ',
+      message: 'nome de usuário inválido',
     }) // regex para validar nome sem numero e com hífen (i case insensitive)
     .transform((value) => value.toLowerCase()),
 })
@@ -37,7 +37,7 @@ export function ClaimUsernameForm() {
         <TextInput
           size="sm"
           prefix="ignite.com/"
-          placeholder="your-username"
+          placeholder="seu-usuario"
           {...register('username')}
         />
         <Button size="sm" type="submit">
@@ -49,7 +49,7 @@ export function ClaimUsernameForm() {
         <Text size="sm">
           {errors.username
             ? errors.username.message
-            : 'Type the desired username'}
+            : 'Escreva seu nome de usuário'}
         </Text>
       </FormAnnotation>
     </>
